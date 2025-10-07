@@ -1,0 +1,7 @@
+{
+  "name": "oath-hammer-sheet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

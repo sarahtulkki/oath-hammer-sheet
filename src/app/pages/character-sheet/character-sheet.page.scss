@@ -1,0 +1,339 @@
+// 2-Column Main Layout
+.character-sheet-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px;
+  margin: 0 10%; // Add left and right margin
+  height: 100vh; // Full viewport height since no header
+  overflow-y: auto;
+  background: whitesmoke;
+}
+
+.main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+// Section Headings
+h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  padding: 6px 8px;
+  background: var(--ion-color-dark);
+  color: white;
+  border-radius: 4px;
+}
+
+// Items
+ion-item {
+  --padding-start: 6px;
+  --padding-end: 6px;
+  --inner-padding-end: 6px;
+  --min-height: 32px;
+  --background: white;
+  margin-bottom: 4px;
+  font-size: 14px;
+  //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--ion-color-medium);
+  
+  ion-label[position="stacked"] {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+  }
+  
+  ion-input, ion-select, ion-textarea {
+    font-size: 14px;
+    --padding-top: 2px;
+    --padding-bottom: 2px;
+    --highlight-color-focused: none;
+    --highlight-color-valid: none;
+    --highlight-color-invalid: transparent;  
+  }
+}
+
+// COLUMN 1
+.column-1 {
+  // Options Section
+  .options-section {
+    h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+    .options-buttons {
+      display: flex;
+      gap: 8px;
+      
+      ion-button {
+        flex: 1;
+        font-size: 12px;
+        background: white;
+        border: 2px solid var(--ion-color-medium);
+        border-radius: 4px;
+      }
+    }
+  }
+  
+  // Character Info Section
+  .info-section {
+    .info-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+  }
+  
+  // Stats Row
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    
+    .stats-section {
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+      }
+    }
+  }
+  
+  // Oaths Section
+  .oaths-section {
+    .oaths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+  }
+  
+  // Magic Section
+  .magic-section {
+    ion-textarea {
+      border-radius: 4px;
+      padding: 6px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      background: white;
+      --highlight-color-focused: none;
+      --highlight-color-valid: none; 
+      --highlight-color-invalid: transparent;  
+      --padding-top: 2px;
+      //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      border: 1px solid var(--ion-color-medium);
+    }
+    
+    .magic-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+  }
+  
+  // Traits Section (2 columns layout)
+  .traits-section {
+    .traits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+  }
+  
+  // Currency Section
+  .currency-section {
+    .currency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+  }
+  
+  // Item Slots (3 columns, 4 rows)
+  .item-slots-section {
+    .item-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      
+      ion-item {
+        margin-bottom: 2px;
+        
+        ion-label {
+          min-width: 20px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// COLUMN 2 - Weapons and Skills
+.column-2 {
+  // Weapons Section
+  .weapons-section {
+    .weapons-header {
+      display: grid;
+      grid-template-columns: 2fr 0.8fr 0.8fr 0.6fr 1.5fr;
+      gap: 4px;
+      padding: 4px;
+      background: var(--ion-color-dark);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      
+      div {
+        text-align: center;
+      }
+    }
+    
+    .weapon-row {
+      display: grid;
+      grid-template-columns: 2fr 0.8fr 0.8fr 0.6fr 1.5fr;
+      gap: 4px;
+      margin-bottom: 4px;
+      
+      ion-input {
+        border: 1px solid var(--ion-color-medium);
+        border-radius: 4px;
+        --padding-start: 4px;
+        --padding-end: 4px;
+        font-size: 14px;
+        height: 28px;
+        text-align: center;
+        background: white;
+        --highlight-color-focused: none;
+        --highlight-color-valid: none;
+        --highlight-color-invalid: transparent;
+      }
+    }
+  }
+  
+  // Skills Section (full height)
+  .skills-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    .skills-grid-header {
+      display: grid;
+      grid-template-columns: 2fr 0.7fr 0.7fr 0.7fr 0.9fr;
+      gap: 3px;
+      padding: 4px;
+      background: var(--ion-color-dark);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      
+      div {
+        text-align: center;
+      }
+    }
+    
+    .skills-scroll {
+      flex: 1;
+      overflow-y: auto;
+      
+      .skill-row {
+        display: grid;
+        grid-template-columns: 2fr 0.7fr 0.7fr 0.7fr 0.9fr;
+        gap: 3px;
+        margin-bottom: 3px;
+        align-items: center;
+        padding: 2px 0;
+        border-bottom: 1px solid var(--ion-color-light);
+        
+        &:hover {
+          background: var(--ion-color-light-tint);
+        }
+        
+        .skill-name {
+          font-size: 14px;
+          font-weight: 500;
+          padding: 0 4px;
+        }
+        
+        ion-input {
+          border: 1px solid var(--ion-color-medium);
+          border-radius: 3px;
+          --padding-start: 3px;
+          --padding-end: 3px;
+          font-size: 14px;
+          height: 24px;
+          text-align: center;
+          background: white;
+          --highlight-color-focused: none;
+          --highlight-color-valid: none;
+          --highlight-color-invalid: transparent;
+        }
+      }
+    }
+  }
+}
+
+// Number inputs
+ion-input[type="number"] {
+  text-align: center;
+  font-weight: 500;
+}
+
+// Empty state
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  
+  ion-icon {
+    font-size: 120px;
+    color: var(--ion-color-medium);
+    margin-bottom: 16px;
+  }
+  
+  h2 {
+    color: var(--ion-color-dark);
+    margin-bottom: 8px;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    margin-bottom: 24px;
+  }
+}
+
+// Responsive - Stack on smaller screens
+@media (max-width: 1200px) {
+  .character-sheet-layout {
+    grid-template-columns: 1fr;
+    
+    .column-1, .column-2, .column-3 {
+      grid-column: 1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .info-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  .stats-row {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .oaths-row .oaths-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

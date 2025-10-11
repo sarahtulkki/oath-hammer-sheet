@@ -1,0 +1,260 @@
+<ion-content *ngIf="character">
+  <div class="character-sheet-layout">
+    
+    <!-- MAIN COLUMN 1 -->
+    <div class="main-column column-1">
+      
+      <!-- Options Section -->
+      <div class="options-section">
+        <h3>Oath Hammer</h3>
+        <div class="options-buttons">
+          <ion-button fill="clear" (click)="openSlotManager()">
+            <ion-icon name="folder-outline" slot="start"></ion-icon>
+            Manage Slots
+          </ion-button>
+          <ion-button fill="clear" (click)="openMenu()">
+            <ion-icon name="ellipsis-vertical" slot="start"></ion-icon>
+            Menu
+          </ion-button>
+        </div>
+      </div>
+      
+      <!-- Character Info -->
+      <div class="info-section">
+        <h3>Character Info</h3>
+        <div class="info-row">
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input [(ngModel)]="character.name" (ionBlur)="saveCharacter()" placeholder="Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Lineage</ion-label>
+            <ion-select [(ngModel)]="character.lineage" (ionChange)="onLineageChange()" placeholder="Lineage">
+              <ion-select-option *ngFor="let lineage of lineages" [value]="lineage">{{ lineage }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Class</ion-label>
+            <ion-select [(ngModel)]="character.class" (ionChange)="onClassChange($event)" 
+              [placeholder]="character.lineage ? 'Class' : 'Select lineage first'"
+              [disabled]="!character.lineage || character.lineage === ''">
+              <ion-select-option *ngFor="let cls of availableClasses" [value]="cls">{{ cls }}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Experience</ion-label>
+            <ion-input [(ngModel)]="character.experience" (ionBlur)="saveCharacter()" placeholder="XP"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Stats Row (Core + Combat) -->
+      <div class="stats-row">
+        <div class="stats-section">
+          <h3>Core Stats</h3>
+          <div class="stats-grid">
+            <ion-item><ion-label position="stacked">Might</ion-label>
+              <ion-input type="number" [(ngModel)]="character.might" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Toughness</ion-label>
+              <ion-input type="number" [(ngModel)]="character.toughness" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Agility</ion-label>
+              <ion-input type="number" [(ngModel)]="character.agility" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Willpower</ion-label>
+              <ion-input type="number" [(ngModel)]="character.willpower" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Intelligence</ion-label>
+              <ion-input type="number" [(ngModel)]="character.intelligence" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Fate</ion-label>
+              <ion-input type="number" [(ngModel)]="character.fate" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+        
+        <div class="stats-section">
+          <h3>Combat Stats</h3>
+          <div class="stats-grid">
+            <ion-item><ion-label position="stacked">Armor</ion-label>
+              <ion-input type="number" [(ngModel)]="character.armor" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">AV</ion-label>
+              <ion-input type="number" [(ngModel)]="character.av" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Penalty</ion-label>
+              <ion-input type="number" [(ngModel)]="character.penalty" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Focus</ion-label>
+              <ion-input type="number" [(ngModel)]="character.focus" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Luck</ion-label>
+              <ion-input type="number" [(ngModel)]="character.luck" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Grit</ion-label>
+              <ion-input type="number" [(ngModel)]="character.grit" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
+            </ion-item>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oaths -->
+      <div class="oaths-section">
+        <h3>Oaths</h3>
+        <div class="oaths-grid">
+          <ion-item *ngFor="let oath of character.oaths; let i = index">
+            <ion-label position="stacked">Oath {{ i + 1 }}</ion-label>
+            <ion-select [(ngModel)]="character.oaths[i]" (ionChange)="saveCharacter()" placeholder="Select" interface="popover">
+              <ion-select-option value="">None</ion-select-option>
+              <ion-select-option *ngFor="let availableOath of getAvailableOaths(i)" [value]="availableOath">
+                {{ availableOath }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Magic & Special Traits -->
+      <div class="magic-section">
+        <h3>Magic and Special Traits</h3>
+        <ion-textarea [(ngModel)]="character.magicAndSpecialTraits" (ionBlur)="saveCharacter()" rows="4" placeholder="Enter magic and special traits"></ion-textarea>
+        <div class="magic-stats">
+          <ion-item>
+            <ion-label position="stacked">Arcane Stress</ion-label>
+            <ion-input [(ngModel)]="character.arcaneStress" (ionBlur)="saveCharacter()" placeholder="Value"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Stress Threshold</ion-label>
+            <ion-input [(ngModel)]="character.stressThreshold" (ionBlur)="saveCharacter()" placeholder="Value"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Spell Save Modifier</ion-label>
+            <ion-input [(ngModel)]="character.spellSaveModifier" (ionBlur)="saveCharacter()" placeholder="Value"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Traits & Items (2 columns) -->
+      <div class="traits-section">
+        <h3>Traits, Talismans, and Trinkets</h3>
+        <div class="traits-grid">
+          <ion-item>
+            <ion-label position="stacked">Trait 1</ion-label>
+            <ion-input [(ngModel)]="character.traits[0]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Trait 2</ion-label>
+            <ion-input [(ngModel)]="character.traits[1]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Talisman 1</ion-label>
+            <ion-input [(ngModel)]="character.talisman1" (ionBlur)="saveCharacter()" placeholder="Talisman"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Talisman 2</ion-label>
+            <ion-input [(ngModel)]="character.talisman2" (ionBlur)="saveCharacter()" placeholder="Talisman"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Trinket 1</ion-label>
+            <ion-input [(ngModel)]="character.trinket1" (ionBlur)="saveCharacter()" placeholder="Trinket"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Trinket 2</ion-label>
+            <ion-input [(ngModel)]="character.trinket2" (ionBlur)="saveCharacter()" placeholder="Trinket"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Currency -->
+      <div class="currency-section">
+        <h3>Currency</h3>
+        <div class="currency-grid">
+          <ion-item>
+            <ion-label position="stacked">Copper</ion-label>
+            <ion-input type="number" [(ngModel)]="character.copper" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Silver</ion-label>
+            <ion-input type="number" [(ngModel)]="character.silver" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Gold</ion-label>
+            <ion-input type="number" [(ngModel)]="character.gold" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+      <!-- Item Slots -->
+      <div class="item-slots-section">
+        <h3>Item Slots</h3>
+        <div class="item-slots-grid">
+          <ion-item *ngFor="let item of character.itemSlots; let i = index; trackBy: trackByIndex">
+            <ion-label position="stacked">{{ i + 1 }}</ion-label>
+            <ion-input [(ngModel)]="character.itemSlots[i]" (ionBlur)="saveCharacter()" placeholder="Item"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN COLUMN 2 - Weapons and Skills -->
+    <div class="main-column column-2">
+      
+      <!-- Weapons -->
+      <div class="weapons-section">
+        <h3>Weapons</h3>
+        <div class="weapons-header">
+          <div>Weapon</div>
+          <div>Rng</div>
+          <div>Dmg</div>
+          <div>AP</div>
+          <div>Traits</div>
+        </div>
+        <div class="weapon-row" *ngFor="let weapon of character.weapons; let i = index">
+          <ion-input [(ngModel)]="weapon.weapon" (ionBlur)="saveCharacter()" placeholder="Weapon"></ion-input>
+          <ion-input [(ngModel)]="weapon.range" (ionBlur)="saveCharacter()" placeholder="Rng"></ion-input>
+          <ion-input [(ngModel)]="weapon.damage" (ionBlur)="saveCharacter()" placeholder="Dmg"></ion-input>
+          <ion-input [(ngModel)]="weapon.ap" (ionBlur)="saveCharacter()" placeholder="AP"></ion-input>
+          <ion-input [(ngModel)]="weapon.traits" (ionBlur)="saveCharacter()" placeholder="Traits"></ion-input>
+        </div>
+      </div>
+      
+      <!-- Skills -->
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <div class="skills-grid-header">
+          <div>Skill</div>
+          <div>Ranks</div>
+          <div>Mod</div>
+          <div>Total</div>
+          <div>Color</div>
+        </div>
+        <div class="skills-scroll">
+          <div class="skill-row" *ngFor="let skill of character.skills">
+            <div class="skill-name">{{ skill.name }}</div>
+            <ion-input [(ngModel)]="skill.skillRanks" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+            <ion-input [(ngModel)]="skill.modifiers" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+            <ion-input [(ngModel)]="skill.totalDice" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+            <ion-input [(ngModel)]="skill.diceColor" (ionBlur)="saveCharacter()" placeholder=""></ion-input>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>
+
+<!-- Empty State -->
+<ion-content *ngIf="!character" class="ion-padding">
+  <div class="empty-state">
+    <ion-icon name="document-text-outline" size="large"></ion-icon>
+    <h2>No Character Selected</h2>
+    <p>Create or load a character to get started</p>
+    <ion-button (click)="openSlotManager()">
+      <ion-icon name="folder-outline" slot="start"></ion-icon>
+      Manage Characters
+    </ion-button>
+  </div>
+</ion-content>

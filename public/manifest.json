@@ -1,0 +1,16 @@
+
+{
+  "name": "Oath Hammer Character Sheet",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "author": "Sarah Tulkki",
+  "description": "A comprehensive character sheet for the Oath Hammer tabletop RPG system. Manage multiple characters, track stats, skills, inventory, and more.",
+  "icon": "/icon.svg",
+  "action": {
+    "title": "Oath Hammer",
+    "icon": "/icon.svg",
+    "popover": "/",
+    "height": 800,
+    "width": 500
+  }
+}

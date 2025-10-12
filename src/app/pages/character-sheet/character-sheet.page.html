@@ -219,9 +219,9 @@
         </div>
         <div class="weapon-row" *ngFor="let weapon of character.weapons; let i = index">
           <ion-input [(ngModel)]="weapon.weapon" (ionBlur)="saveCharacter()" placeholder="Weapon"></ion-input>
-          <ion-input [(ngModel)]="weapon.range" (ionBlur)="saveCharacter()" placeholder="Rng"></ion-input>
-          <ion-input [(ngModel)]="weapon.damage" (ionBlur)="saveCharacter()" placeholder="Dmg"></ion-input>
-          <ion-input [(ngModel)]="weapon.ap" (ionBlur)="saveCharacter()" placeholder="AP"></ion-input>
+          <ion-input [(ngModel)]="weapon.range" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+          <ion-input [(ngModel)]="weapon.damage" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
+          <ion-input [(ngModel)]="weapon.ap" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
           <ion-input [(ngModel)]="weapon.traits" (ionBlur)="saveCharacter()" placeholder="Traits"></ion-input>
         </div>
       </div>

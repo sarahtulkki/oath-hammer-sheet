@@ -262,11 +262,10 @@
 <!-- Empty State -->
 <ion-content *ngIf="!character" class="ion-padding">
   <div class="empty-state">
-    <ion-icon name="document-text-outline" size="large"></ion-icon>
-    <h2>No Character Selected</h2>
-    <p>Create or load a character to get started</p>
+    <img src='assets/logo.png' width="100" height="100" alt='Oath Hammer' />
+    <h2>Oath Hammer</h2>
+    <p>Create or load a character to get started!</p>
     <ion-button (click)="openSlotManager()">
-      <ion-icon name="folder-outline" slot="start"></ion-icon>
       Manage Characters
     </ion-button>
   </div>

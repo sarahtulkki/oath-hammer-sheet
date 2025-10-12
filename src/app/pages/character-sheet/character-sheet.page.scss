@@ -24,7 +24,7 @@ h3 {
   font-weight: 700;
   margin: 0 0 8px 0;
   padding: 6px 8px;
-  background: var(--ion-color-dark);
+  background: black;
   color: white;
   border-radius: 4px;
   display: flex;
@@ -47,7 +47,7 @@ ion-item {
   margin-bottom: 4px;
   font-size: 14px;
   border-radius: 4px;
-  border: 1px solid var(--ion-color-medium);
+  border: 1px solid #808080;
   
   ion-label[position="stacked"] {
     font-size: 16px;
@@ -131,7 +131,7 @@ ion-item {
       --highlight-color-valid: none; 
       --highlight-color-invalid: transparent;  
       --padding-top: 2px;
-      border: 1px solid var(--ion-color-medium);
+      border: 1px solid #808080;
       font-family: "Inter", sans-serif;
     }
     
@@ -209,7 +209,7 @@ ion-item {
       grid-template-columns: 1.5fr 0.8fr 0.8fr 0.6fr 2fr;
       gap: 4px;
       padding: 4px;
-      background: var(--ion-color-medium);
+      background: #808080;
       color: white;
       font-size: 14px;
       font-weight: 600;
@@ -228,7 +228,7 @@ ion-item {
       margin-bottom: 4px;
       
       ion-input {
-        border: 1px solid var(--ion-color-medium);
+        border: 1px solid #808080;
         border-radius: 4px;
         --padding-start: 4px;
         --padding-end: 4px;
@@ -254,7 +254,7 @@ ion-item {
       grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 0.6fr 0.8fr;
       gap: 3px;
       padding: 4px;
-      background: var(--ion-color-medium);
+      background: #808080;
       color: white;
       font-size: 14px;
       font-weight: 600;
@@ -301,7 +301,7 @@ ion-item {
         }
         
         ion-input {
-          border: 1px solid var(--ion-color-medium);
+          border: 1px solid #808080;
           border-radius: 3px;
           --padding-start: 3px;
           --padding-end: 3px;
@@ -315,7 +315,7 @@ ion-item {
         }
         
         ion-select {
-          border: 1px solid var(--ion-color-medium);
+          border: 1px solid #808080;
           border-radius: 3px;
           font-size: 12px;
           height: 24px;
@@ -358,13 +358,13 @@ ion-input[type="number"] {
   }
   
   h2 {
-    color: var(--ion-color-dark);
+    color: black;
     margin-bottom: 8px;
     font-weight: 700
   }
   
   p {
-    color: var(--ion-color-medium);
+    color: #808080;
     margin-bottom: 24px;
   }
 }

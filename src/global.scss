@@ -66,3 +66,34 @@
     --ion-color-step-950: #0d0d0d;
   }
 }
+
+// Force light mode dropdowns/popovers
+ion-popover,
+ion-modal,
+ion-action-sheet,
+.popover-content,
+.modal-wrapper {
+  --background: whitesmoke !important;
+  --ion-background-color: whitesmoke !important;
+  --color: #000000 !important;
+  --ion-text-color: #000000 !important;
+}
+
+// Force select dropdown options to be light
+ion-select-popover {
+  --background: whitesmoke !important;
+  
+  ion-list {
+    background: whitesmoke !important;
+  }
+  
+  ion-item {
+    --background: whitesmoke !important;
+    --color: #000000 !important;
+  }
+}
+
+// Also target the popover backdrop
+.popover-viewport {
+  background: rgba(0, 0, 0, 0.3) !important;
+}

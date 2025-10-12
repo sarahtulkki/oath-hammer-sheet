@@ -3,7 +3,7 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 
-import { Character, LINEAGES, CLASSES_BY_LINEAGE, AVAILABLE_OATHS, applyClassSkillDefaults } from '../../models/character.model';
+import { Character, Skill, LINEAGES, CLASSES_BY_LINEAGE, AVAILABLE_OATHS, applyClassSkillDefaults } from '../../models/character.model';
 import { StorageService } from '../../services/storage.service';
 import { OwlbearService } from '../../services/owlbear.service';
 import { SlotManagerComponent } from '../../components/slot-manager/slot-manager.component';
@@ -321,5 +321,48 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
     return this.allOaths.filter(oath => 
       !selectedOaths.includes(oath) || oath === this.character!.oaths[currentIndex]
     );
+  }
+
+  // Get skill attribute value based on skill name
+  getSkillAttribute(skillName: string): string {
+    if (!this.character) return '';
+
+    // Extract attribute code from skill name (e.g., "Athletics (M)" -> "M")
+    const match = skillName.match(/\(([^)]+)\)/);
+    if (!match) return '';
+
+    const attrCode = match[1];
+
+    // Map attribute codes to character stats
+    const attrMap: { [key: string]: number } = {
+      'Int': this.character.intelligence,
+      'WP': this.character.willpower,
+      'M': this.character.might,
+      'Ag': this.character.agility,
+      'F': this.character.fate,
+      'T': this.character.toughness
+    };
+
+    // Handle combined attributes (e.g., "Int / WP" or "Ag / M")
+    if (attrCode.includes('/')) {
+      const codes = attrCode.split('/').map(c => c.trim());
+      const values = codes.map(code => attrMap[code] || 0);
+      // Return the sum of all attribute values
+      return values.reduce((sum, val) => sum + val, 0).toString();
+    }
+
+    // Single attribute
+    return (attrMap[attrCode] || 0).toString();
+  }
+
+  // Calculate skill total (Ranks + Mod + Attr)
+  calculateSkillTotal(skill: Skill): string {
+    if (!this.character) return '0';
+
+    const ranks = parseInt(skill.skillRanks) || 0;
+    const mod = parseInt(skill.modifiers) || 0;
+    const attr = parseInt(this.getSkillAttribute(skill.name)) || 0;
+
+    return (ranks + mod + attr).toString();
   }
 }

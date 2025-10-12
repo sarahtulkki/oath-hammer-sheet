@@ -36,66 +36,47 @@
           <ion-item>
             <ion-label position="stacked">Class</ion-label>
             <ion-select [(ngModel)]="character.class" (ionChange)="onClassChange($event)" 
-              [placeholder]="character.lineage ? 'Class' : 'Select lineage first'"
-              [disabled]="!character.lineage || character.lineage === ''">
+              [placeholder]="'Class'">
               <ion-select-option *ngFor="let cls of availableClasses" [value]="cls">{{ cls }}</ion-select-option>
             </ion-select>
           </ion-item>
+        </div>
+        <div class="info-row">
           <ion-item>
             <ion-label position="stacked">Experience</ion-label>
-            <ion-input [(ngModel)]="character.experience" (ionBlur)="saveCharacter()" placeholder="XP"></ion-input>
+            <ion-input type="number" [(ngModel)]="character.experience" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
           </ion-item>
+          <ion-item><ion-label position="stacked">Luck</ion-label>
+              <ion-input type="number" [(ngModel)]="character.luck" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+            </ion-item>
+            <ion-item><ion-label position="stacked">Grit</ion-label>
+              <ion-input type="number" [(ngModel)]="character.grit" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+            </ion-item>
         </div>
       </div>
 
-      <!-- Stats Row (Core + Combat) -->
-      <div class="stats-row">
-        <div class="stats-section">
-          <h3>Core Stats</h3>
-          <div class="stats-grid">
-            <ion-item><ion-label position="stacked">Might</ion-label>
-              <ion-input type="number" [(ngModel)]="character.might" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Toughness</ion-label>
-              <ion-input type="number" [(ngModel)]="character.toughness" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Agility</ion-label>
-              <ion-input type="number" [(ngModel)]="character.agility" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Willpower</ion-label>
-              <ion-input type="number" [(ngModel)]="character.willpower" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Intelligence</ion-label>
-              <ion-input type="number" [(ngModel)]="character.intelligence" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Fate</ion-label>
-              <ion-input type="number" [(ngModel)]="character.fate" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-          </div>
-        </div>
-        
-        <div class="stats-section">
-          <h3>Combat Stats</h3>
-          <div class="stats-grid">
-            <ion-item><ion-label position="stacked">Armor</ion-label>
-              <ion-input type="number" [(ngModel)]="character.armor" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">AV</ion-label>
-              <ion-input type="number" [(ngModel)]="character.av" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Penalty</ion-label>
-              <ion-input type="number" [(ngModel)]="character.penalty" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Focus</ion-label>
-              <ion-input type="number" [(ngModel)]="character.focus" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Luck</ion-label>
-              <ion-input type="number" [(ngModel)]="character.luck" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-            <ion-item><ion-label position="stacked">Grit</ion-label>
-              <ion-input type="number" [(ngModel)]="character.grit" (ionBlur)="saveCharacter()" min="1" max="6" placeholder="1"></ion-input>
-            </ion-item>
-          </div>
+      <!-- Attributes -->
+      <div class="stats-section">
+        <h3>Attributes</h3>
+        <div class="attributes-grid">
+          <ion-item><ion-label position="stacked">Might</ion-label>
+            <ion-input type="number" [(ngModel)]="character.might" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item><ion-label position="stacked">Toughness</ion-label>
+            <ion-input type="number" [(ngModel)]="character.toughness" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item><ion-label position="stacked">Agility</ion-label>
+            <ion-input type="number" [(ngModel)]="character.agility" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item><ion-label position="stacked">Willpower</ion-label>
+            <ion-input type="number" [(ngModel)]="character.willpower" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item><ion-label position="stacked">Intelligence</ion-label>
+            <ion-input type="number" [(ngModel)]="character.intelligence" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item><ion-label position="stacked">Fate</ion-label>
+            <ion-input type="number" [(ngModel)]="character.fate" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+          </ion-item>
         </div>
       </div>
 
@@ -118,7 +99,7 @@
       <!-- Magic & Special Traits -->
       <div class="magic-section">
         <h3>Magic and Special Traits</h3>
-        <ion-textarea [(ngModel)]="character.magicAndSpecialTraits" (ionBlur)="saveCharacter()" rows="4" placeholder="Enter magic and special traits"></ion-textarea>
+        <ion-textarea [(ngModel)]="character.magicAndSpecialTraits" (ionBlur)="saveCharacter()" rows="12" placeholder="Enter magic and special traits"></ion-textarea>
         <div class="magic-stats">
           <ion-item>
             <ion-label position="stacked">Arcane Stress</ion-label>
@@ -135,17 +116,13 @@
         </div>
       </div>
 
-      <!-- Traits & Items (2 columns) -->
+      <!-- Magic Items -->
       <div class="traits-section">
-        <h3>Traits, Talismans, and Trinkets</h3>
+        <h3>Magic Items</h3>
         <div class="traits-grid">
           <ion-item>
-            <ion-label position="stacked">Trait 1</ion-label>
-            <ion-input [(ngModel)]="character.traits[0]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="stacked">Trait 2</ion-label>
-            <ion-input [(ngModel)]="character.traits[1]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
+            <ion-label position="stacked">Focus</ion-label>
+            <ion-input [(ngModel)]="character.focus" (ionBlur)="saveCharacter()" placeholder="Focus"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="stacked">Talisman 1</ion-label>
@@ -198,9 +175,38 @@
 
     </div>
 
-    <!-- MAIN COLUMN 2 - Weapons and Skills -->
+    <!-- MAIN COLUMN 2 - Armor, Weapons and Skills -->
     <div class="main-column column-2">
       
+      <!-- Armor Section -->
+      <div class="armor-section">
+        <h3>Armor</h3>
+        <div class="armor-row">
+          <ion-item>
+            <ion-label position="stacked">Armor Type</ion-label>
+            <ion-input [(ngModel)]="character.armorType" (ionBlur)="saveCharacter()" placeholder="Type"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Armor Value</ion-label>
+            <ion-input type="number" [(ngModel)]="character.armor" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Armor Penalty</ion-label>
+            <ion-input type="number" [(ngModel)]="character.penalty" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
+          </ion-item>
+        </div>
+        <div class="armor-traits-row">
+          <ion-item>
+            <ion-label position="stacked">Trait 1</ion-label>
+            <ion-input [(ngModel)]="character.traits[0]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Trait 2</ion-label>
+            <ion-input [(ngModel)]="character.traits[1]" (ionBlur)="saveCharacter()" placeholder="Trait"></ion-input>
+          </ion-item>
+        </div>
+      </div>
+
       <!-- Weapons -->
       <div class="weapons-section">
         <h3>Weapons</h3>
@@ -225,8 +231,9 @@
         <h3>Skills</h3>
         <div class="skills-grid-header">
           <div>Skill</div>
-          <div>Ranks</div>
+          <div>Rank</div>
           <div>Mod</div>
+          <div>Attr</div>
           <div>Total</div>
           <div>Color</div>
         </div>
@@ -235,8 +242,14 @@
             <div class="skill-name">{{ skill.name }}</div>
             <ion-input [(ngModel)]="skill.skillRanks" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
             <ion-input [(ngModel)]="skill.modifiers" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
-            <ion-input [(ngModel)]="skill.totalDice" (ionBlur)="saveCharacter()" placeholder="0"></ion-input>
-            <ion-input [(ngModel)]="skill.diceColor" (ionBlur)="saveCharacter()" placeholder=""></ion-input>
+            <div class="skill-attr">{{ getSkillAttribute(skill.name) }}</div>
+            <div class="skill-total">{{ calculateSkillTotal(skill) }}</div>
+            <ion-select [(ngModel)]="skill.diceColor" (ionChange)="saveCharacter()" placeholder="" interface="popover">
+              <ion-select-option value="">-</ion-select-option>
+              <ion-select-option value="black">Black</ion-select-option>
+              <ion-select-option value="red">Red</ion-select-option>
+              <ion-select-option value="white">White</ion-select-option>
+            </ion-select>
           </div>
         </div>
       </div>

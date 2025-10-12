@@ -46,7 +46,6 @@ ion-item {
   --background: white;
   margin-bottom: 4px;
   font-size: 14px;
-  //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 4px;
   border: 1px solid var(--ion-color-medium);
   
@@ -55,6 +54,7 @@ ion-item {
     font-weight: 600;
     margin-bottom: 0px;
     font-family: "Inter", sans-serif;
+    white-space: nowrap;
   }
   
   ion-input, ion-select, ion-textarea {
@@ -96,23 +96,17 @@ ion-item {
   .info-section {
     .info-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 6px;
     }
   }
   
-  // Stats Row
-  .stats-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    
-    .stats-section {
-      .stats-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4px;
-      }
+  // Attributes Section
+  .stats-section {
+    .attributes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
     }
   }
   
@@ -137,7 +131,6 @@ ion-item {
       --highlight-color-valid: none; 
       --highlight-color-invalid: transparent;  
       --padding-top: 2px;
-      //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       border: 1px solid var(--ion-color-medium);
       font-family: "Inter", sans-serif;
     }
@@ -149,12 +142,17 @@ ion-item {
     }
   }
   
-  // Traits Section (2 columns layout)
+  // Magic Items Section
   .traits-section {
     .traits-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6px;
+      
+      // Make Focus span full width in first row
+      ion-item:first-child {
+        grid-column: 1 / -1;
+      }
     }
   }
   
@@ -167,7 +165,7 @@ ion-item {
     }
   }
   
-  // Item Slots (3 columns, 4 rows)
+  // Item Slots
   .item-slots-section {
     .item-slots-grid {
       display: grid;
@@ -186,13 +184,29 @@ ion-item {
   }
 }
 
-// COLUMN 2 - Weapons and Skills
+// COLUMN 2 - Armor, Weapons and Skills
 .column-2 {
+  // Armor Section
+  .armor-section {
+    .armor-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    
+    .armor-traits-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+  }
+
   // Weapons Section
   .weapons-section {
     .weapons-header {
       display: grid;
-      grid-template-columns: 2fr 0.8fr 0.8fr 0.6fr 1.5fr;
+      grid-template-columns: 1.5fr 0.8fr 0.8fr 0.6fr 2fr;
       gap: 4px;
       padding: 4px;
       background: var(--ion-color-medium);
@@ -209,7 +223,7 @@ ion-item {
     
     .weapon-row {
       display: grid;
-      grid-template-columns: 2fr 0.8fr 0.8fr 0.6fr 1.5fr;
+      grid-template-columns: 1.5fr 0.8fr 0.8fr 0.6fr 2fr;
       gap: 4px;
       margin-bottom: 4px;
       
@@ -237,7 +251,7 @@ ion-item {
     
     .skills-grid-header {
       display: grid;
-      grid-template-columns: 2fr 0.7fr 0.7fr 0.7fr 0.9fr;
+      grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 0.6fr 0.8fr;
       gap: 3px;
       padding: 4px;
       background: var(--ion-color-medium);
@@ -261,7 +275,7 @@ ion-item {
       
       .skill-row {
         display: grid;
-        grid-template-columns: 2fr 0.7fr 0.7fr 0.7fr 0.9fr;
+        grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 0.6fr 0.8fr;
         gap: 3px;
         margin-bottom: 3px;
         align-items: center;
@@ -278,6 +292,14 @@ ion-item {
           padding: 0 4px;
         }
         
+        .skill-attr,
+        .skill-total {
+          font-size: 14px;
+          font-weight: 600;
+          text-align: center;
+          padding: 4px;
+        }
+        
         ion-input {
           border: 1px solid var(--ion-color-medium);
           border-radius: 3px;
@@ -290,6 +312,17 @@ ion-item {
           --highlight-color-focused: none;
           --highlight-color-valid: none;
           --highlight-color-invalid: transparent;
+        }
+        
+        ion-select {
+          border: 1px solid var(--ion-color-medium);
+          border-radius: 3px;
+          font-size: 12px;
+          height: 24px;
+          text-align: center;
+          background: white;
+          --padding-start: 3px;
+          --padding-end: 3px;
         }
       }
     }
@@ -333,7 +366,7 @@ ion-input[type="number"] {
   .character-sheet-layout {
     grid-template-columns: 1fr;
     
-    .column-1, .column-2, .column-3 {
+    .column-1, .column-2 {
       grid-column: 1;
     }
   }
@@ -348,11 +381,15 @@ ion-input[type="number"] {
     grid-template-columns: 1fr 1fr !important;
   }
   
-  .stats-row {
+  .attributes-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  .oaths-grid {
     grid-template-columns: 1fr !important;
   }
   
-  .oaths-row .oaths-grid {
-    grid-template-columns: 1fr !important;
+  .magic-stats {
+    grid-template-columns: 1fr 1fr !important;
   }
 }

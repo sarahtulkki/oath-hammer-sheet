@@ -4,8 +4,10 @@ export interface Character {
   lineage: string;
   class: string;
   experience: string;
+  luck: number;
+  grit: number;
 
-  // Core Stats (1-6 range)
+  // Attributes
   might: number;
   toughness: number;
   agility: number;
@@ -13,20 +15,19 @@ export interface Character {
   intelligence: number;
   fate: number;
 
-  // Combat Stats
+  // Armor Stats
+  armorType: string;
   armor: number;
   av: number;
   penalty: number;
-  focus: number;
-  luck: number;
-  grit: number;
-
-  // Traits and Items
   traits: string[]; // Max 2
+
+  // Magic Items
   talisman1: string;
   talisman2: string;
   trinket1: string;
   trinket2: string;
+  focus: string;
 
   // Oaths
   oaths: string[]; // Max 3
@@ -89,18 +90,18 @@ export const CLASSES_BY_LINEAGE: { [key: string]: string[] } = {
 
 // Available oaths
 export const AVAILABLE_OATHS = [
-  'Oath of Compassion',
-  'Oath of Courage',
-  'Oath of Diligence',
-  'Oath of Faith',
-  'Oath of Humility',
-  'Oath of Justice',
-  'Oath of Loyalty',
-  'Oath of Peace',
-  'Oath of Perseverance',
-  'Oath of Purity',
-  'Oath of Truth',
-  'Oath of Wisdom'
+  'Compassion',
+  'Courage',
+  'Diligence',
+  'Faith',
+  'Humility',
+  'Justice',
+  'Loyalty',
+  'Peace',
+  'Perseverance',
+  'Purity',
+  'Truth',
+  'Wisdom'
 ];
 
 // Default skill ranks by class
@@ -261,25 +262,26 @@ export function createNewCharacter(): Character {
     lineage: '',
     class: '',
     experience: '',
+    luck: 0,
+    grit: 0,
     
-    // Core stats default to 1
-    might: 1,
-    toughness: 1,
-    agility: 1,
-    willpower: 1,
-    intelligence: 1,
-    fate: 1,
+    // Attributes - default to 0
+    might: 0,
+    toughness: 0,
+    agility: 0,
+    willpower: 0,
+    intelligence: 0,
+    fate: 0,
     
-    // Combat stats
-    armor: 1,
-    av: 1,
-    penalty: 1,
-    focus: 1,
-    luck: 1,
-    grit: 1,
-    
-    // Traits
+    // Armor stats
+    armorType: '',
+    armor: 0,
+    av: 0,
+    penalty: 0,
     traits: ['', ''],
+    
+    // Magic items
+    focus: '',
     talisman1: '',
     talisman2: '',
     trinket1: '',

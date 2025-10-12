@@ -53,7 +53,7 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
             slot="end" 
             (click)="createNew(i, $event)"
             *ngIf="!slot.character"
-            [color]= "'medium'">
+            [color]="i === activeSlotIndex ? 'white' : 'medium'">
             Create
           </ion-button>
           

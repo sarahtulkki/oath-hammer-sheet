@@ -37,7 +37,7 @@
             <ion-label position="stacked">Class</ion-label>
             <ion-select [(ngModel)]="character.class" (ionChange)="onClassChange($event)" 
               [placeholder]="'Class'">
-              <ion-select-option *ngFor="let cls of availableClasses" [value]="cls">{{ cls }}</ion-select-option>
+              <ion-select-option *ngFor="let cls of allClasses" [value]="cls">{{ cls }}</ion-select-option>
             </ion-select>
           </ion-item>
         </div>
@@ -47,10 +47,10 @@
             <ion-input type="number" [(ngModel)]="character.experience" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
           </ion-item>
           <ion-item><ion-label position="stacked">Luck</ion-label>
-              <ion-input type="number" [(ngModel)]="character.luck" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+              <ion-input type="number" [(ngModel)]="character.luck" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
             </ion-item>
             <ion-item><ion-label position="stacked">Grit</ion-label>
-              <ion-input type="number" [(ngModel)]="character.grit" (ionBlur)="saveCharacter()" min="0" max="5" placeholder="0"></ion-input>
+              <ion-input type="number" [(ngModel)]="character.grit" (ionBlur)="saveCharacter()" min="0" placeholder="0"></ion-input>
             </ion-item>
         </div>
       </div>

@@ -18,7 +18,7 @@ import { CharacterMenuPopoverComponent } from '../../components/character-menu-p
 export class CharacterSheetPage implements OnInit, OnDestroy {
   character: Character | null = null;
   lineages = LINEAGES;
-  availableClasses: string[] = [];
+  allClasses: string[] = [];
   allOaths = AVAILABLE_OATHS;
   
   isOwlbearReady = false;
@@ -37,6 +37,11 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    const allClassesArray: string[] = [];
+    Object.values(CLASSES_BY_LINEAGE).forEach(classes => {
+      allClassesArray.push(...classes);
+    });
+    this.allClasses = [...new Set(allClassesArray)].sort();
     // Load current character
     this.storage.currentCharacter
       .pipe(takeUntil(this.destroy$))
@@ -106,8 +111,6 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
   onLineageChange() {
     if (this.character) {
       this.updateAvailableClasses(this.character.lineage);
-      this.character.class = ''; // Reset class when lineage changes
-      this.previousClass = '';
       this.saveCharacter();
     }
   }
@@ -159,7 +162,7 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
 
   // Update available classes based on lineage
   private updateAvailableClasses(lineage: string) {
-    this.availableClasses = CLASSES_BY_LINEAGE[lineage] || [];
+    this.allClasses = CLASSES_BY_LINEAGE[lineage] || [];
   }
 
   // Save character (with auto-save debounce)

@@ -70,7 +70,7 @@ export interface Skill {
 
 // Lineage and Class definitions
 export const LINEAGES = [
-  'Dwarve',
+  'Dwarf',
   'Firbolg',
   'Halfling',
   'High Elf',
@@ -79,7 +79,7 @@ export const LINEAGES = [
 ];
 
 export const CLASSES_BY_LINEAGE: { [key: string]: string[] } = {
-  'Dwarve': ['Berserker', 'Champion', 'Delver', 'Knight', 'Mage', 'Priest', 'Scout', 'Soldier', 'Spellblade', 'Troubadour'],
+  'Dwarf': ['Berserker', 'Champion', 'Delver', 'Knight', 'Mage', 'Priest', 'Scout', 'Soldier', 'Spellblade', 'Troubadour'],
   'Firbolg': ['Berserker', 'Champion', 'Delver', 'Knight', 'Mage', 'Priest', 'Scout', 'Soldier', 'Spellblade', 'Troubadour'],
   'Halfling': ['Berserker', 'Champion', 'Delver', 'Knight', 'Mage', 'Priest', 'Scout', 'Soldier', 'Spellblade', 'Troubadour'],
   'High Elf': ['Berserker', 'Champion', 'Delver', 'Knight', 'Mage', 'Priest', 'Scout', 'Soldier', 'Spellblade', 'Troubadour'],

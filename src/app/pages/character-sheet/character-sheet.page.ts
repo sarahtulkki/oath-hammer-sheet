@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ModalController, ActionSheetController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 
@@ -7,6 +7,7 @@ import { Character, LINEAGES, CLASSES_BY_LINEAGE, AVAILABLE_OATHS, applyClassSki
 import { StorageService } from '../../services/storage.service';
 import { OwlbearService } from '../../services/owlbear.service';
 import { SlotManagerComponent } from '../../components/slot-manager/slot-manager.component';
+import { CharacterMenuPopoverComponent } from '../../components/character-menu-popover/character-menu-popover.component';
 
 @Component({
   selector: 'app-character-sheet',
@@ -32,7 +33,6 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
     private storage: StorageService,
     private owlbear: OwlbearService,
     private modalCtrl: ModalController,
-    private actionSheetCtrl: ActionSheetController,
     private alertCtrl: AlertController
   ) {}
 
@@ -200,42 +200,20 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
     }
   }
 
-  // Open menu action sheet
+  // Open menu modal
   async openMenu() {
-    const buttons: any[] = [
-      {
-        text: 'Export Character',
-        icon: 'download-outline',
-        handler: () => this.exportCharacter()
-      },
-      {
-        text: 'Import Character',
-        icon: 'cloud-upload-outline',
-        handler: () => this.importCharacter()
+    const modal = await this.modalCtrl.create({
+      component: CharacterMenuPopoverComponent,
+      cssClass: 'character-menu-modal',
+      componentProps: {
+        isGM: this.isGM,
+        onExport: () => this.exportCharacter(),
+        onImport: () => this.importCharacter(),
+        onViewAll: () => this.viewAllCharacters()
       }
-    ];
-
-    // Add GM features
-    if (this.isGM) {
-      buttons.push({
-        text: 'View All Characters',
-        icon: 'people-outline',
-        handler: () => this.viewAllCharacters()
-      });
-    }
-
-    buttons.push({
-      text: 'Cancel',
-      icon: 'close',
-      role: 'cancel'
     });
 
-    const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Character Options',
-      buttons
-    });
-
-    await actionSheet.present();
+    await modal.present();
   }
 
   // Export character to JSON

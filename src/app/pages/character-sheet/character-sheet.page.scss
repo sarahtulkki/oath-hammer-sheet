@@ -4,10 +4,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   padding: 12px;
+  max-width: 1100px;
   margin: 0 10%; // Add left and right margin
   height: 100vh; // Full viewport height since no header
   overflow-y: auto;
   background: whitesmoke;
+  font-family: "Inter", sans-serif;
 }
 
 .main-column {
@@ -25,6 +27,14 @@ h3 {
   background: var(--ion-color-dark);
   color: white;
   border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    margin-right: 8px;
+  }
 }
 
 // Items
@@ -44,6 +54,7 @@ ion-item {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 0px;
+    font-family: "Inter", sans-serif;
   }
   
   ion-input, ion-select, ion-textarea {
@@ -52,7 +63,8 @@ ion-item {
     --padding-bottom: 2px;
     --highlight-color-focused: none;
     --highlight-color-valid: none;
-    --highlight-color-invalid: transparent;  
+    --highlight-color-invalid: transparent; 
+    font-family: "Inter", sans-serif;
   }
 }
 
@@ -71,9 +83,11 @@ ion-item {
       ion-button {
         flex: 1;
         font-size: 12px;
-        background: white;
-        border: 2px solid var(--ion-color-medium);
+        background: var(--primary-red);
+        border: none;
         border-radius: 4px;
+        --color: white;
+        font-weight: 600;
       }
     }
   }
@@ -125,6 +139,7 @@ ion-item {
       --padding-top: 2px;
       //box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       border: 1px solid var(--ion-color-medium);
+      font-family: "Inter", sans-serif;
     }
     
     .magic-stats {
@@ -180,7 +195,7 @@ ion-item {
       grid-template-columns: 2fr 0.8fr 0.8fr 0.6fr 1.5fr;
       gap: 4px;
       padding: 4px;
-      background: var(--ion-color-dark);
+      background: var(--ion-color-medium);
       color: white;
       font-size: 14px;
       font-weight: 600;
@@ -225,7 +240,7 @@ ion-item {
       grid-template-columns: 2fr 0.7fr 0.7fr 0.7fr 0.9fr;
       gap: 3px;
       padding: 4px;
-      background: var(--ion-color-dark);
+      background: var(--ion-color-medium);
       color: white;
       font-size: 14px;
       font-weight: 600;
@@ -325,6 +340,10 @@ ion-input[type="number"] {
 }
 
 @media (max-width: 768px) {
+  .character-sheet-layout {
+    margin: 0 2%;
+  }
+
   .info-row {
     grid-template-columns: 1fr 1fr !important;
   }

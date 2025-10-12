@@ -28,7 +28,7 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
           <ion-icon 
             [name]="slot.character ? 'person' : 'person-outline'" 
             slot="start"
-            [color]="i === activeSlotIndex ? 'primary' : 'medium'">
+            [color]="i === activeSlotIndex ? 'white' : 'medium'">
           </ion-icon>
           
           <ion-label>
@@ -43,6 +43,7 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
             fill="clear" 
             slot="end" 
             (click)="loadSlot(i, $event)"
+            [color]="i === activeSlotIndex ? 'white' : 'medium'"
             *ngIf="slot.character">
             Load
           </ion-button>
@@ -51,7 +52,8 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
             fill="clear" 
             slot="end" 
             (click)="createNew(i, $event)"
-            *ngIf="!slot.character">
+            *ngIf="!slot.character"
+            [color]= "'medium'">
             Create
           </ion-button>
           
@@ -69,7 +71,28 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
   `,
   styles: [`
     .active-slot {
-      --background: var(--ion-color-primary-tint);
+      --background: var(--primary-red);
+      color: white;
+      
+      p {
+        color: white;
+      }
+
+      .slot-date {
+        color: white;
+      }
+
+      ion-icon {
+        color: white !important;
+      }
+
+      ion-button {
+        --color: white !important;
+      }
+    }
+
+    ion-button {
+      font-weight: 600;
     }
 
     .slot-date {

@@ -301,8 +301,8 @@ export function createNewCharacter(): Character {
     silver: 0,
     gold: 0,
     
-    // Item slots (default 12 slots)
-    itemSlots: Array(12).fill(''),
+    // Item slots (default 20 slots)
+    itemSlots: Array(20).fill(''),
     
     // Weapons (default 3 empty rows)
     weapons: [

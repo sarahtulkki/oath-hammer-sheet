@@ -22,17 +22,35 @@ export class StorageService {
     try {
       const stored = localStorage.getItem(this.STORAGE_KEY);
       const activeSlot = localStorage.getItem(this.ACTIVE_SLOT_KEY);
-      
+
       if (stored) {
         const slots: CharacterSlot[] = JSON.parse(stored);
+
+        // Migrate characters: ensure itemSlots has 20 elements
+        slots.forEach(slot => {
+          if (slot.character && slot.character.itemSlots) {
+            const currentLength = slot.character.itemSlots.length;
+            if (currentLength < 20) {
+              // Expand to 20 slots by adding empty strings
+              slot.character.itemSlots = [
+                ...slot.character.itemSlots,
+                ...Array(20 - currentLength).fill('')
+              ];
+            }
+          }
+        });
+
         this.characterSlots$.next(slots);
-        
+
         const slotIndex = activeSlot ? parseInt(activeSlot, 10) : 0;
         this.activeSlotIndex$.next(slotIndex);
-        
+
         if (slots[slotIndex]?.character) {
           this.currentCharacter$.next(slots[slotIndex].character);
         }
+
+        // Save migrated data back to storage
+        this.saveToStorage();
       } else {
         // Initialize with empty slots
         this.initializeEmptySlots();

@@ -350,8 +350,8 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
     if (attrCode.includes('/')) {
       const codes = attrCode.split('/').map(c => c.trim());
       const values = codes.map(code => attrMap[code] || 0);
-      // Return the sum of all attribute values
-      return values.reduce((sum, val) => sum + val, 0).toString();
+      // Return separate values with pipe separator (e.g., "3 | 2")
+      return values.join(' | ');
     }
 
     // Single attribute
@@ -364,8 +364,18 @@ export class CharacterSheetPage implements OnInit, OnDestroy {
 
     const ranks = parseInt(skill.skillRanks) || 0;
     const mod = parseInt(skill.modifiers) || 0;
-    const attr = parseInt(this.getSkillAttribute(skill.name)) || 0;
+    const attrString = this.getSkillAttribute(skill.name);
 
+    // Handle dual attributes (e.g., "3 | 2")
+    if (attrString.includes('|')) {
+      const attrValues = attrString.split('|').map(v => parseInt(v.trim()) || 0);
+      const totals = attrValues.map(attrVal => ranks + mod + attrVal);
+      // Return separate totals with pipe separator (e.g., "5 | 4")
+      return totals.join(' | ');
+    }
+
+    // Single attribute
+    const attr = parseInt(attrString) || 0;
     return (ranks + mod + attr).toString();
   }
 }

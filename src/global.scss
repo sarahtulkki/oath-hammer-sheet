@@ -79,14 +79,103 @@ ion-action-sheet,
   --ion-text-color: #000000 !important;
 }
 
-// Force select dropdown options to be light
-ion-select-popover {
-  --background: whitesmoke !important;
-  
+// Force all modal content to light mode
+ion-modal {
+  ion-header {
+    ion-toolbar {
+      --background: #f5f5f5 !important;
+      --color: #000000 !important;
+      border-bottom: 1px solid #d0d0d0 !important;
+
+      ion-title {
+        color: #000000 !important;
+      }
+
+      ion-button {
+        --color: #000000 !important;
+        color: #000000 !important;
+
+        ion-icon {
+          color: #000000 !important;
+        }
+      }
+    }
+  }
+
+  ion-content {
+    --background: whitesmoke !important;
+    --ion-background-color: whitesmoke !important;
+    --color: #000000 !important;
+    --ion-text-color: #000000 !important;
+  }
+
   ion-list {
     background: whitesmoke !important;
   }
-  
+
+  ion-item {
+    --background: #ffffff !important;
+    --color: #000000 !important;
+    --ion-text-color: #000000 !important;
+
+    ion-label {
+      color: #000000 !important;
+
+      h2, p {
+        color: #000000 !important;
+      }
+    }
+
+    ion-icon {
+      color: #808080 !important;
+    }
+
+    ion-button {
+      --color: #000000 !important;
+      color: #000000 !important;
+    }
+  }
+
+  // Keep active slot styling with red background
+  ion-item.active-slot {
+    --background: #9e0e06 !important;
+    --color: #ffffff !important;
+
+    ion-label,
+    ion-label h2,
+    ion-label p {
+      color: #ffffff !important;
+    }
+
+    ion-icon {
+      color: #ffffff !important;
+    }
+
+    ion-button {
+      --color: #ffffff !important;
+      color: #ffffff !important;
+    }
+  }
+
+  // Danger button (delete) styling
+  ion-button[color="danger"] {
+    --color: #eb445a !important;
+    color: #eb445a !important;
+
+    ion-icon {
+      color: #eb445a !important;
+    }
+  }
+}
+
+// Force select dropdown options to be light
+ion-select-popover {
+  --background: whitesmoke !important;
+
+  ion-list {
+    background: whitesmoke !important;
+  }
+
   ion-item {
     --background: whitesmoke !important;
     --color: #000000 !important;

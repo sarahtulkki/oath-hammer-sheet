@@ -9,7 +9,7 @@ import { CharacterSlot, MAX_CHARACTER_SLOTS } from '../../models/character.model
   standalone: false,
   template: `
     <ion-header>
-      <ion-toolbar color="dark">
+      <ion-toolbar>
         <ion-title>Character Slots</ion-title>
         <ion-buttons slot="end">
           <ion-button (click)="close()">

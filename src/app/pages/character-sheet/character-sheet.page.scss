@@ -171,10 +171,11 @@ ion-item {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 4px;
-      
+      row-gap: 10px;
+
       ion-item {
         margin-bottom: 2px;
-        
+
         ion-label {
           min-width: 20px;
           font-weight: 600;
@@ -281,9 +282,9 @@ ion-item {
         align-items: center;
         padding: 2px 0;
         border-bottom: 1px solid var(--ion-color-light);
-        
+
         &:hover {
-          background: var(--ion-color-light-tint);
+          background: #e6e6e6 !important;
         }
         
         .skill-name {

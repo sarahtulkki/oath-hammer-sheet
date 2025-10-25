@@ -386,19 +386,25 @@ ion-input[type="number"] {
     margin: 0 2%;
   }
 
-  .info-row {
-    grid-template-columns: 1fr 1fr !important;
-  }
-  
   .attributes-grid {
     grid-template-columns: 1fr 1fr !important;
   }
-  
+
   .oaths-grid {
     grid-template-columns: 1fr !important;
   }
-  
+
   .magic-stats {
     grid-template-columns: 1fr 1fr !important;
+  }
+
+  .skills-section {
+    .skills-grid-header {
+      grid-template-columns: 1.5fr 0.6fr 0.6fr 0.7fr 0.7fr 0.8fr !important;
+    }
+
+    .skill-row {
+      grid-template-columns: 1.5fr 0.6fr 0.6fr 0.7fr 0.7fr 0.8fr !important;
+    }
   }
 }

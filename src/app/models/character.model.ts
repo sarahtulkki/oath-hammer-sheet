@@ -37,6 +37,7 @@ export interface Character {
   arcaneStress: string;
   stressThreshold: string;
   spellSaveModifier: string;
+  currentMiracleDV: string;
 
   // Currency
   copper: number;
@@ -295,6 +296,7 @@ export function createNewCharacter(): Character {
     arcaneStress: '',
     stressThreshold: '',
     spellSaveModifier: '',
+    currentMiracleDV: '',
     
     // Currency
     copper: 0,

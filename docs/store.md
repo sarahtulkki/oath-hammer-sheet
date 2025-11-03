@@ -2,6 +2,8 @@
 title: Oath Hammer Character Sheet
 description: Comprehensive character sheet for Oath Hammer RPG with multi-character support, auto-save, and GM features
 author: Sarah Tulkki
+image: https://img1.wsimg.com/isteam/ip/d67bd066-7130-4822-a4f3-61656e68c71f/BBP3-314284a.png
+icon: https://img1.wsimg.com/isteam/ip/d67bd066-7130-4822-a4f3-61656e68c71f/BBP3-314284a.png
 tags:
   - tool
   - character-sheet

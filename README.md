@@ -3,7 +3,7 @@
 <div align="center">
   <img src="src/assets/logo.png" alt="Oath Hammer Logo" width="100" height="100">
 
-  **A comprehensive character sheet extension for the Oath Hammer RPG**
+  **A comprehensive character sheet extension for the [Oath Hammer RPG](https://thebrokenblade.com/oath-hammer)**
 
   Built for seamless integration with [Owlbear Rodeo](https://www.owlbear.rodeo/)
 </div>

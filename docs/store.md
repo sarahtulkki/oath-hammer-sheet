@@ -8,7 +8,7 @@ tags:
   - tool
   - character-sheet
   - rpg
-manifest: https://github.com/sarahtulkki/oath-hammer-sheet/blob/main/public/manifest.json
+manifest: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/public/manifest.json
 learn-more: https://github.com/sarahtulkki/oath-hammer-character-sheet
 ---
 

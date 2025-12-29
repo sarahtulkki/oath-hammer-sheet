@@ -6,10 +6,8 @@ image: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/src/
 icon: https://img1.wsimg.com/isteam/ip/d67bd066-7130-4822-a4f3-61656e68c71f/BBP3-314284a.png
 tags:
   - tool
-  - character-sheet
-  - rpg
 manifest: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/public/manifest.json
-learn-more: https://github.com/sarahtulkki/oath-hammer-character-sheet
+learn-more: https://github.com/sarahtulkki/oath-hammer-sheet
 ---
 
 # Oath Hammer Character Sheet

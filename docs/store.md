@@ -3,7 +3,7 @@ title: Oath Hammer Character Sheet
 description: Comprehensive character sheet for Oath Hammer RPG with multi-character support, auto-save, and GM features
 author: Broken Blade Publishing
 image: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/src/assets/hero-image-1.png
-icon: https://img1.wsimg.com/isteam/ip/d67bd066-7130-4822-a4f3-61656e68c71f/BBP3-314284a.png
+icon: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/src/assets/logo.png
 tags:
   - tool
 manifest: https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/public/manifest.json

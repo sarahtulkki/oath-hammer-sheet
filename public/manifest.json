@@ -5,10 +5,10 @@
   "manifest_version": 1,
   "author": "Sarah Tulkki",
   "description": "Comprehensive character sheet for Oath Hammer RPG with multi-character support, auto-save, and GM features",
-  "icon": "/icon.svg",
+  "icon": "https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/src/assets/logo.png",
   "action": {
     "title": "Oath Hammer",
-    "icon": "/icon.svg",
+    "icon": "https://raw.githubusercontent.com/sarahtulkki/oath-hammer-sheet/main/src/assets/logo.png",
     "popover": "/",
     "height": 800,
     "width": 500
